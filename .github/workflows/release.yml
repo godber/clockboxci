@@ -1,9 +1,8 @@
-name: build
+name: release
 
 on:
-  push:
-    branches:
-      - "main"
+    release:
+      types: [published]
 
 jobs:
   build:
@@ -27,4 +26,5 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
+          push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:latest
